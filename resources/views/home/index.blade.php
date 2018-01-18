@@ -13,10 +13,8 @@
                 <div class="col-xs-5">
                     <select class="form-control" name="astro">
                         <?php
-                        $astro = ['おひつじ座', 'おうし座', 'ふふたご座', 'かに座', 'しし座', 'おとめ座', 'てんびん座', 'さそり座', 'いて座', 'やぎ座', 'みずがめ座', 'うお座'];
-                        foreach ($astro as $key => $value) {
-                            $key = $key+1;
-                            echo '<option value="', $key, '">', $value, '</option>';
+                        foreach ($astros as $key => $value) {
+                            echo '<option value="', $key+1, '">', $value, '</option>';
                         }
                         ?>
                     </select>
@@ -27,7 +25,6 @@
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             </div>
         </form>
-        <a href="https://fortune.yahoo.co.jp/12astro/<?php echo $astro[0]?>"></a>
     </div>
 </div>
 @endsection

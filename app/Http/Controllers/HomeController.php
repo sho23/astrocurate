@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		return view('home.index');
+		$astros = DB::table('astros')->pluck('name');
+		return view('home.index', ['astros' => $astros]);
 	}
 
 	public function curate(Request $request)
@@ -24,7 +25,7 @@ class HomeController extends Controller
 				->where('date', date('Y-m-d'))
 				->orderBy('site_id')
 				->join('sites', 'sites.id', '=', 'fortunes.site_id')
-				->select('fortunes.*', 'sites.name', 'sites.url')
+				->select('fortunes.*', 'sites.name', 'sites.url', 'sites.id')
 				->get();
 		$astroName = DB::table('astros')
 				->where('id', $astroId)

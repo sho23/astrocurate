@@ -4,25 +4,40 @@
 	<div id="wrap">
 		<div class="container">
 			<div class="page-header text-center">
-				<h3>{{ date('Y年m月d日') . 'の' . $astroName->name . '運勢を横断で見てみよう！' }}</h3>
+				<h3>{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見てみよう！' }}</h3>
 			</div>
 			<div class="row">
 @foreach ($fortunes as $fortune)
-				<div class="col-md-4">
-					<div class="panel panel-default">
+<?php
+	$urlCode = $fortune->url_code;
+	if ($fortune->site_id == 2) {
+		$urlCode = date("Y/n/j/") . $fortune->url_code;
+	} elseif ($fortune->site_id == 4) {
+		$urlCode = $fortune->url_code . '/';
+	} elseif ($fortune->site_id == 7) {
+		$urlCode = sprintf('%02d', $fortune->url_code) . '.html';
+	}
+?>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-primary">
 						<div class="panel-heading text-center">
 						{{ $fortune->name }}
 						</div>
 						<div class="panel-body">
-							<div class="col-md-6">
-								<p>総合　{{ str_repeat("★", $fortune->general) }}</p>
-								<p>恋愛　{{ str_repeat("★", $fortune->love) }}</p>
-								<p>仕事　{{ str_repeat("★", $fortune->job) }}</p>
-								<p>お金　{{ str_repeat("★", $fortune->money) }}</p>
+							<div class="col-xs-6">
+								<p class="text-success">総合<br>{{ str_repeat("★", $fortune->general) }}</p>
+								<p class="text-danger">恋愛<br>{{ str_repeat("★", $fortune->love) }}</p>
+								<p class="text-primary">仕事<br>{{ str_repeat("★", $fortune->job) }}</p>
+								<p class="text-warning">お金<br>{{ str_repeat("★", $fortune->money) }}</p>
 							</div>
-							<div class="col-md-6">
-								<a class="btn btn-primary" href="{{ $fortune->url }}" target="_blank"></a>
+							<div class="col-xs-6 text-center">
+								<a href="{{ $fortune->url . $urlCode }}" target="_blank">
+									<img src="{{ asset('/images/ico' . $fortune->site_id . '.png') }}" alt="" width="100">
+								</a>
 							</div>
+						</div>
+						<div class="panel-footer text-center">
+								<a href="{{ $fortune->url . $urlCode }}" target="_blank">さらに詳しく</a>
 						</div>
 					</div>
 				</div>
@@ -30,6 +45,19 @@
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-body text-center">
+					@foreach ($fortunes as $fortune)
+<?php
+	$urlCode = $fortune->url_code;
+	if ($fortune->site_id == 2) {
+		$urlCode = date("Y/n/j/") . $fortune->url_code;
+	} elseif ($fortune->site_id == 4) {
+		$urlCode = $fortune->url_code . '/';
+	} elseif ($fortune->site_id == 7) {
+		$urlCode = sprintf('%02d', $fortune->url_code) . '.html';
+	}
+?>
+						<a href="{{ $fortune->url . $urlCode }}" class="btn btn-primary" target="_blank">{{ $fortune->name }}</a>
+					@endforeach
 					<a class="btn btn-default"  href="/">星座を選び直す</a>
 				</div>
 			</div>
