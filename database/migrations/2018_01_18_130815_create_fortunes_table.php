@@ -23,6 +23,7 @@ class CreateFortunesTable extends Migration
             $table->integer('job');
             $table->integer('money');
             $table->date('date');
+            $table->string('url_code');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->foreign('site_id')
