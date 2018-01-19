@@ -30,11 +30,11 @@
 								<p class="text-primary">仕事<br>{{ str_repeat("★", $fortune->job) }}</p>
 								<p class="text-warning">お金<br>{{ str_repeat("★", $fortune->money) }}</p>
 							</div>
-							<div class="col-xs-6 text-center">
-								<a href="{{ $fortune->url . $urlCode }}" target="_blank">
-									<img src="{{ asset('/images/ico' . $fortune->site_id . '.png') }}" alt="" width="100">
-								</a>
-							</div>
+							<a href="{{ $fortune->url . $urlCode }}" target="_blank">
+								<div class="col-xs-6 text-center center-img">
+										<img src="{{ asset('/images/ico' . $fortune->site_id . '.png') }}" alt="" width="100">
+								</div>
+							</a>
 						</div>
 						<div class="panel-footer text-center">
 								<a href="{{ $fortune->url . $urlCode }}" target="_blank">さらに詳しく</a>
