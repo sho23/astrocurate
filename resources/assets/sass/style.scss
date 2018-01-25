@@ -1,6 +1,6 @@
 .center-img {
 	position: relative;
-	height: 200px;
+	height: 100px;
 	img {
 		position: absolute;
 		top: 0;
@@ -9,4 +9,39 @@
 		left: 0;
 		margin: auto;
 	}
+}
+
+.animated {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+.panel-warning>.panel-heading, .panel-footer {
+  background-color: #fceeee !important;
+  border-color: #fceeee !important;
+}
+
+.astrolist {
+  a:hover {
+    text-decoration: none;
+  }
+  a:hover .panel {
+    opacity: 0.8;
+  }
 }
