@@ -13,7 +13,7 @@ class AstrosTableSeeder extends Seeder
     {
         $astros = [
             ['おひつじ座', 'aries', '3/21～4/19'],
-            ['おひつじ座', 'taurus', '4/20～5/20'],
+            ['おうし座', 'taurus', '4/20～5/20'],
             ['ふたご座', 'gemini', '5/21～6/21'],
             ['かに座', 'cancer', '6/22～7/22'],
             ['しし座', 'leo', '7/23～8/22'],
