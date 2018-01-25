@@ -18,10 +18,11 @@ class CreateFortunesTable extends Migration
             $table->increments('id');
             $table->integer('site_id')->unsigned();
             $table->integer('astro_id')->unsigned();
-            $table->integer('general');
-            $table->integer('love');
-            $table->integer('job');
-            $table->integer('money');
+            $table->integer('general')->nullable();
+            $table->integer('love')->nullable();
+            $table->integer('job')->nullable();
+            $table->integer('money')->nullable();
+            $table->integer('ranking')->nullable();
             $table->date('date');
             $table->string('url_code');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

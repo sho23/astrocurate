@@ -60,5 +60,9 @@ class SitesTableSeeder extends Seeder
             'name' => 'FIGARO',
 			'url' => 'https://madamefigaro.jp/fortune/horoscope/'
         ]);
+        DB::table('sites')->insert([
+            'name' => 'goo占い',
+            'url' => 'https://fortune.goo.ne.jp/destiny/'
+        ]);
     }
 }

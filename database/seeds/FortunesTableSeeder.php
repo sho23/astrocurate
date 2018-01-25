@@ -19,7 +19,7 @@ class FortunesTableSeeder extends Seeder
 		];
 		$sitesCnt = DB::table('sites')->count();
     	for ($i=1; $i <= $sitesCnt; $i++) {
-			if (in_array($i, [1,2,6,9,10])) {
+			if (in_array($i, [1,2,6,9,10,11])) {
 				$type = 0;
 			} elseif ($i == 3) {
 				$type = 1;
@@ -36,6 +36,7 @@ class FortunesTableSeeder extends Seeder
 	                'love' => rand(1,5),
 	                'job' => rand(1,5),
 	                'money' => rand(1,5),
+	                'ranking' => rand(1,12),
 	                'url_code' => $astroLinks[$type][$j-1],
 	                'date' => DB::raw('CURRENT_TIMESTAMP'),
 	            ]);

@@ -16,6 +16,7 @@ class CreateAstrosTable extends Migration
         Schema::create('astros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('en_name');
             $table->string('period');
             $table->boolean('delete_flag')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
