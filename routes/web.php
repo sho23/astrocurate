@@ -13,5 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home/index', ['uses' => 'HomeController@index', 'as' => 'home.index']);
-Route::get('curate','HomeController@curate');
-Route::post('curate','HomeController@curate');
+Route::get('/curate/{astro_id}', ['uses' => 'HomeController@curate', 'as' => 'curate']);
