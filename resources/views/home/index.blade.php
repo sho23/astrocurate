@@ -30,7 +30,7 @@
         <div class="row astrolist">
             @foreach ($astros as $astro)
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="{{ route('curate', ['astro_id' => $astro->id], false) }}">
+                    <a href="{{ url('/curate', ['astro_id' => $astro->id]) }}">
                         <div class="panel panel-warning text-center">
                             <div class="panel-heading text-center">
                                 <h2 class="text-center">{{ $astro->name }}  <small>{{ $astro->period }}</small></h2>

@@ -68,7 +68,7 @@
 ?>
 						<a href="{{ $fortune->url . $urlCode }}" class="btn btn-primary" target="_blank">{{ $fortune->name }}</a>
 					@endforeach
-					<a class="btn btn-default"  href="/">星座を選び直す</a>
+					<a class="btn btn-default"  href="{{ url('/') }}">星座を選び直す</a>
 				</div>
 			</div>
 		</div>
