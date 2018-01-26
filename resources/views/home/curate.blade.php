@@ -3,8 +3,9 @@
 @section('content')
 	<div id="wrap">
 		<div class="container">
-			<div class="page-header text-center">
-				<h3>{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見てみよう！' }}</h3>
+			<div class="page-header">
+	            <p class="text-left"><img src="{{ asset('/images/astrocurate_title.png') }}" alt="" width="300"></p>
+				<h3 class="text-center">{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見てみよう！' }}</h3>
 			</div>
 			<div class="row">
 <?php 
