@@ -14,6 +14,16 @@
         <meta property="og:image" content="{{ asset('/images/og_image.png') }}">
         <meta property="og:site_name" content="アストロキュレート">
         <meta property="og:description" content="今日の運勢のキュレーション！あなたの今日の運勢は？">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113135718-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-113135718-1');
+        </script>
     </head>
     <body>
         <div class="container">
