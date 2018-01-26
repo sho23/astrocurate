@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+         \App\Console\Commands\GetItemFeed::class,
         //
     ];
 
@@ -24,8 +25,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('getitem')
+                ->cron('*/5 * * * * *');
+
+        // crontab -e
+        // 0,10 2 * * * php ~/project_path/artisan getitem
+        //毎晩 2:00, 2:10分にgetitemを実行
     }
 
     /**

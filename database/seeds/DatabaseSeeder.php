@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AstrosTableSeeder::class);
 
         // test data
-        $this->call(FortunesTableSeeder::class);
+        // $this->call(FortunesTableSeeder::class);
     }
 }
