@@ -124,8 +124,8 @@ class GetItemFeed extends Command
     {
         if ($this->checkData(2)) {
             return;
-        } elseif (strtotime(date("Y/m/d") . '07:00:30') > strtotime(date("Y/m/d H:i:s"))) {
-            Log::info('Update after 7AM　Date:' . date('Y-m-d H:i:s'));
+        } elseif (strtotime(date("Y/m/d") . '02:04:30') > strtotime(date("Y/m/d H:i:s"))) {
+            Log::info('Update after 2AM　Date:' . date('Y-m-d H:i:s'));
             return;
         }
         $client = new Client();
@@ -292,7 +292,7 @@ class GetItemFeed extends Command
         ->where('site_id', $site_id)
         ->first();
         if (count($fortunes) > 0) {
-            Log::info('Updated site_id=' . $site_id . 'Date:' . date('Y-m-d H:i:s'));
+            Log::info('Updated site_id=' . $site_id . ' Date:' . date('Y-m-d H:i:s'));
             return true;
         }
         return false;
