@@ -40,14 +40,6 @@ class GetItemFeed extends Command
      */
     public function handle()
     {
-        $fortunes = DB::table('fortunes')
-        ->where('date', date('Y-m-d'))
-        ->first();
-        if (count($fortunes) > 0) {
-            Log::info('更新済み' . date('Y-m-d H:i:s'));
-            return;
-        }
-
         $this->getYahoo();
         $this->getVogue();
         /* so-net　ランキングないため無視 */
@@ -62,12 +54,13 @@ class GetItemFeed extends Command
         $this->getMTV();
         $this->getEo();
         $this->getFigaro();
-
-        Log::info('更新完了' . date('Y-m-d H:i:s'));
     }
 
     public function getYahoo()
     {
+        if ($this->checkData(1)) {
+            return;
+        }
         $client = new Client();
         $crawler = $client->request('GET', "https://fortune.yahoo.co.jp/12astro/ranking.html");
         $astroRanks = [];
@@ -94,6 +87,9 @@ class GetItemFeed extends Command
 
     public function getGoo()
     {
+        if ($this->checkData(11)) {
+            return;
+        }
         $client = new Client();
         $urlCodes = $this->getUrlCodes(1);
         foreach ($urlCodes as $key => $urlCode) {
@@ -126,6 +122,12 @@ class GetItemFeed extends Command
 
     public function getVogue()
     {
+        if ($this->checkData(2)) {
+            return;
+        } elseif (strtotime(date("Y/m/d") . '07:00:30') > strtotime(date("Y/m/d H:i:s"))) {
+            Log::info('Update after 7AM　Date:' . date('Y-m-d H:i:s'));
+            return;
+        }
         $client = new Client();
         $urlCodes = $this->getUrlCodes(1);
         foreach ($urlCodes as $key => $urlCode) {
@@ -141,11 +143,14 @@ class GetItemFeed extends Command
 
     public function getNifty()
     {
+        if ($this->checkData(4)) {
+            return;
+        }
         $client = new Client();
         $urlCodes = $this->getUrlCodes(3);
         foreach ($urlCodes as $key => $urlCode) {
             $astroId = $key + 1;
-            $crawler = $client->request('GET', "https://uranai.nifty.com/f12seiza/" . $urlCode . "/");
+            $crawler = $client->request('GET', "https://uranai.nifty.com/f12seiza/" . $urlCode . '/' . date('Ymd') . '/');
             $alt = $crawler->filter('.obi-brown')->filter('h2')->text();
             $rankElm = explode(" ", $alt);
             $rank = preg_replace('/[^0-9]/', '', $rankElm[4]);
@@ -157,6 +162,9 @@ class GetItemFeed extends Command
 
     public function getAu()
     {
+        if ($this->checkData(5)) {
+            return;
+        }
         $client = new Client();
         $crawler = $client->request('GET', "https://fortune.auone.jp/astro/");
         $astroRanks = [];
@@ -183,6 +191,9 @@ class GetItemFeed extends Command
 
     public function getDocomo()
     {
+        if ($this->checkData(7)) {
+            return;
+        }
         $client = new Client();
         $urlCodes = $this->getUrlCodes(4);
         foreach ($urlCodes as $key => $urlCode) {
@@ -198,6 +209,9 @@ class GetItemFeed extends Command
 
     public function getMTV()
     {
+        if ($this->checkData(8)) {
+            return;
+        }
         $client = new Client();
         $urlCodes = $this->getUrlCodes(4);
         foreach ($urlCodes as $key => $urlCode) {
@@ -213,6 +227,9 @@ class GetItemFeed extends Command
 
     public function getEo()
     {
+        if ($this->checkData(9)) {
+            return;
+        }
         $client = new Client();
         $crawler = $client->request('GET', "http://eonet.jp/fortune/constellation/");
         $astroRanks = [];
@@ -241,6 +258,9 @@ class GetItemFeed extends Command
 
     public function getFigaro()
     {
+        if ($this->checkData(10)) {
+            return;
+        }
         $client = new Client();
         $crawler = $client->request('GET', "https://madamefigaro.jp/fortune/horoscope/");
         $astroRanks = [];
@@ -263,6 +283,19 @@ class GetItemFeed extends Command
                 ['site_id' => 10    , 'astro_id' => $astroId->id, 'ranking' => $ranking, 'url_code' => $urlCodes[$astroId->id -1],'date' => date('Y-m-d')]
             );
         }
+    }
+
+    private function checkData($site_id)
+    {
+        $fortunes = DB::table('fortunes')
+        ->where('date', date('Y-m-d'))
+        ->where('site_id', $site_id)
+        ->first();
+        if (count($fortunes) > 0) {
+            Log::info('Updated site_id=' . $site_id . 'Date:' . date('Y-m-d H:i:s'));
+            return true;
+        }
+        return false;
     }
 
     private function getUrlCodes($type)
