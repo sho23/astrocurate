@@ -11,9 +11,12 @@
         <meta property="og:title" content="アストロキュレート 今日の運勢を横断検索！">
         <meta property="og:type" content="website">
         <meta property="og:url" content="http://blond.boo.jp/astrocurate/">
-        <meta property="og:image" content="{{ asset('/images/astrocurate.png') }}">
+        <meta property="og:image" content="{{ asset('/images/ogpfb.png') }}">
         <meta property="og:site_name" content="アストロキュレート">
         <meta property="og:description" content="今日の運勢のキュレーション！あなたの今日の運勢は？">
+
+        <meta name="twitter:image" content="{{ asset('/images/ogptw.png') }}" />
+        <meta name="twitter:card" content="summary_large_image">
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113135718-1"></script>
