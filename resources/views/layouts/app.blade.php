@@ -11,7 +11,7 @@
         <meta property="og:title" content="アストロキュレート 今日の運勢を横断検索！">
         <meta property="og:type" content="website">
         <meta property="og:url" content="http://blond.boo.jp/astrocurate/">
-        <meta property="og:image" content="{{ asset('/images/ogpfb.png') }}">
+        <meta property="og:image" content="{{ asset('/images/ogpfb-min.png') }}">
         <meta property="og:site_name" content="アストロキュレート">
         <meta property="og:description" content="今日の運勢のキュレーション！あなたの今日の運勢は？">
 
