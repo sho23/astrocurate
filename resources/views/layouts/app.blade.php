@@ -18,6 +18,9 @@
         <meta name="twitter:image" content="{{ asset('/images/ogptw.png') }}" />
         <meta name="twitter:card" content="summary_large_image">
 
+        <link rel="shortcut icon" href="{{ asset('/images/homeicon.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('/images/homeicon.png') }}">
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113135718-1"></script>
         <script>
