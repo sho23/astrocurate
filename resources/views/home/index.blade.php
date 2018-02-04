@@ -37,7 +37,7 @@
                                 <h2 class="text-center">{{ $astro->name }}  <small>{{ $astro->period }}</small></h2>
                             </div>
                             <div class="panel-body">
-                                <img src="{{ asset('/images/' . $astro->en_name . '.png') }}" alt="" width="100">
+                                <img src="{{ asset('/images/' . $astro->en_name . '.jpeg') }}" alt="" width="100">
                             </div>
                         </div>
                     </a>
