@@ -52,6 +52,11 @@
 				</div>
 @endforeach
 			</div>
+			<div class="ad-box">
+				<!-- admax -->
+				<script src="//adm.shinobi.jp/s/9d70a3817ecbd29117bd7b8b9a8e28b8"></script>
+				<!-- admax -->
+			</div>
 			<div class="panel panel-default links">
 				<div class="panel-body text-center">
 					@foreach ($fortunes as $fortune)

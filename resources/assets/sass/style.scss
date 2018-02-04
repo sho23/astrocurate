@@ -68,6 +68,13 @@ body {
   background-color: #f5f5f5;
 }
 
+.ad-box {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+
 @media screen and (max-width: 768px) {
   .container {
     width: inherit;
@@ -87,5 +94,6 @@ body {
   }
   .links {
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
