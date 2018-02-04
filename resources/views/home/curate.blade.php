@@ -7,7 +7,7 @@
 	            <p class="text-left"><img src="{{ asset('/images/astrocurate_title.png') }}" alt="" width="300"></p>
 				<h3 class="text-center">{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見てみよう！' }}</h3>
 			</div>
-			<div class="row">
+			<div class="row animated fadeInUp">
 <?php 
 	$bgNum = range(0, 10);
 	shuffle($bgNum);
@@ -26,7 +26,7 @@
 	}
 ?>
 				<div class="col-md-4 col-sm-6 col-xs-12">
-					<div class="panel panel-warning animated fadeInUp">
+					<div class="panel panel-warning">
 							<div class="panel-heading text-center">
 								<h2 class="text-center">{{ $fortune->ranking }}位 <small>( {{ $fortune->name }} )</small></h2>
 							</div>
