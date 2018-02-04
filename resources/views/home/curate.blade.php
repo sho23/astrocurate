@@ -25,7 +25,7 @@
 		$urlCode = $fortune->url_code . '.html';
 	}
 ?>
-				<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="col-md-4 col-sm-{{ $key == 0 ? '12' : '6' }} col-xs-12">
 					<div class="panel panel-warning">
 							<div class="panel-heading text-center">
 								<h2 class="text-center">{{ $fortune->ranking }}位 <small>( {{ $fortune->name }} )</small></h2>
