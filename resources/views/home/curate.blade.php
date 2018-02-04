@@ -41,7 +41,7 @@
 							@endif
 							<a href="{{ $fortune->url . $urlCode }}" target="_blank">
 								<div class="col-xs-12" style="padding:0;">
-										<img src="{{ asset('/images/bg' . $bgNum[$key] . '.JPG') }}" alt="" width="100%">
+										<img src="{{ asset('/images/bg' . $bgNum[$key] . '-min.JPG') }}" alt="" width="100%">
 								</div>
 							</a>
 						</div>
