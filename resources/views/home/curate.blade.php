@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="page-header">
 	            <p class="text-left"><img src="{{ asset('/images/astrocurate_title.png') }}" alt="" width="300"></p>
-				<h3 class="text-center">{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見てみよう！' }}</h3>
+				<h3 class="text-center">{{ date('Y年m月d日') . 'の' . $astroName->name . 'の運勢を横断で見よう！' }}</h3>
 			</div>
 			<div class="row animated fadeInUp">
 <?php 
@@ -25,7 +25,7 @@
 		$urlCode = $fortune->url_code . '.html';
 	}
 ?>
-				<div class="col-md-4 col-sm-{{ $key == 0 ? '12' : '6' }} col-xs-12">
+				<div class="col-md-4 col-sm-{{ $key == 0 ? '12' : '6' }} col-xs-{{ $key == 0 ? '12' : '6' }}">
 					<div class="panel panel-warning">
 							<div class="panel-heading text-center">
 								<h2 class="text-center">{{ $fortune->ranking }}位 <small>( {{ $fortune->name }} )</small></h2>
@@ -52,7 +52,7 @@
 				</div>
 @endforeach
 			</div>
-			<div class="panel panel-default">
+			<div class="panel panel-default links">
 				<div class="panel-body text-center">
 					@foreach ($fortunes as $fortune)
 <?php
