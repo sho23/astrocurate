@@ -260,6 +260,8 @@ class GetItemFeed extends Command
     {
         if ($this->checkData(10)) {
             return;
+        } elseif (strtotime(date("Y/m/d") . '00:05:00') > strtotime(date("Y/m/d H:i:s"))) {
+            return;
         }
         $client = new Client();
         $crawler = $client->request('GET', "https://madamefigaro.jp/fortune/horoscope/");
