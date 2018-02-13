@@ -260,7 +260,8 @@ class GetItemFeed extends Command
     {
         if ($this->checkData(10)) {
             return;
-        } elseif (strtotime(date("Y/m/d") . '00:05:00') > strtotime(date("Y/m/d H:i:s"))) {
+        } elseif (strtotime(date("Y/m/d") . '02:04:30') > strtotime(date("Y/m/d H:i:s"))) {
+            Log::info('Update after 2AM　Date:' . date('Y-m-d H:i:s'));
             return;
         }
         $client = new Client();
