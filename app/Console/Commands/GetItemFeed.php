@@ -43,7 +43,7 @@ class GetItemFeed extends Command
         $this->getYahoo();
         $this->getVogue();
         /* so-net　ランキングないため無視 */
-        $this->getGoo();
+        // $this->getGoo();
         $this->getNifty();
         $this->getAu();
 
