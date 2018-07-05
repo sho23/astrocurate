@@ -37,8 +37,12 @@ class HomeController extends Controller
 		return view('home.curate', ['fortunes' => $fortunes, 'astroName' => $astroName]);
 	}
 
-    public function bestRank($date, $astroId)
+    public function bestRank(Request $request)
     {
+    	$date = $request->input('date');
+    	$astroId = $request->input('astroId');
+    	if (empty($date) || empty($astroId)) return;
+
         $text = [];
         $fortune = DB::table('fortunes')
                 ->where('date', $date)
