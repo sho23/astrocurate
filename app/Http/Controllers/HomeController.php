@@ -47,12 +47,24 @@ class HomeController extends Controller
                 ->where('date', date('Y-m-d'))
                 ->where('astro_id', $astroId)
                 ->join('sites', 'sites.id', '=', 'fortunes.site_id')
-                ->select('fortunes.ranking', 'fortunes.url_code', 'fortunes.date', 'sites.name', 'sites.url')
+                ->select('fortunes.ranking', 'fortunes.site_id', 'fortunes.url_code', 'fortunes.date', 'sites.name', 'sites.url')
                 ->orderBy('ranking', 'asc')
                 ->first();
         $text['ranking'] = $fortune->ranking;
         $text['name'] = $fortune->name;
-        $text['url'] = $fortune->url . $fortune->url_code;
+
+		$urlCode = $fortune->url_code;
+		if ($fortune->site_id == 2) {
+			$urlCode = date("Y/n/j/") . $fortune->url_code;
+		} elseif ($fortune->site_id == 4) {
+			$urlCode = $fortune->url_code . '/';
+		} elseif ($fortune->site_id == 7) {
+			$urlCode = sprintf('%02d', $fortune->url_code) . '.html';
+		} elseif ($fortune->site_id == 11) {
+			$urlCode = $fortune->url_code . '.html';
+		}
+
+        $text['url'] = $fortune->url . $urlCode;
         return json_encode($text);
     }
 
