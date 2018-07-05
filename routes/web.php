@@ -13,4 +13,5 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home/index', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('/home/bestRank', ['uses' => 'HomeController@bestRank', 'as' => 'home.bestRank']);
 Route::get('/curate/{astro_id}', ['uses' => 'HomeController@curate', 'as' => 'curate']);

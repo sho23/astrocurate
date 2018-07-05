@@ -36,4 +36,21 @@ class HomeController extends Controller
 				->first();
 		return view('home.curate', ['fortunes' => $fortunes, 'astroName' => $astroName]);
 	}
+
+    public function bestRank($date, $astroId)
+    {
+        $text = [];
+        $fortune = DB::table('fortunes')
+                ->where('date', $date)
+                ->where('astro_id', $astroId)
+                ->join('sites', 'sites.id', '=', 'fortunes.site_id')
+                ->select('fortunes.ranking', 'fortunes.url_code', 'fortunes.date', 'sites.name', 'sites.url')
+                ->orderBy('ranking', 'asc')
+                ->first();
+        $text['ranking'] = $fortune->ranking;
+        $text['name'] = $fortune->name;
+        $text['url'] = $fortune->url . $fortune->url_code;
+        return json_encode($text);
+    }
+
 }
