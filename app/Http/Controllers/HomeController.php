@@ -39,13 +39,12 @@ class HomeController extends Controller
 
     public function bestRank(Request $request)
     {
-    	$date = $request->input('date');
     	$astroId = $request->input('astroId');
-    	if (empty($date) || empty($astroId)) return;
+		if (empty($astroId)) return;
 
         $text = [];
         $fortune = DB::table('fortunes')
-                ->where('date', $date)
+                ->where('date', date('Y-m-d'))
                 ->where('astro_id', $astroId)
                 ->join('sites', 'sites.id', '=', 'fortunes.site_id')
                 ->select('fortunes.ranking', 'fortunes.url_code', 'fortunes.date', 'sites.name', 'sites.url')
